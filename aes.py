@@ -24,7 +24,7 @@ def truncate(s):
 
 def pad(s):
     """
-        简单的补齐字符串到某个长度
+    简单的补齐字符串到某个长度
     """
     return s + b"\0" * (AES.block_size - len(s) % AES.block_size)
 
@@ -62,6 +62,8 @@ def decrypt_file(input_file, key, iv):
             # Reverse the process
             # b64decode -> decrypt -> unpad
             # Use the URL safe version of the b64 decoding
-            decrypted = unpad(cipher.decrypt(base64.urlsafe_b64decode(line)).decode("utf-8"))
+            s = cipher.decrypt(base64.urlsafe_b64decode(line))
+            print("decrpyt s = %s" % s)
+            decrypted = unpad(s.decode("utf-8"))
             buf.write(decrypted)
     return buf
