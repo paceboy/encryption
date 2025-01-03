@@ -1,9 +1,8 @@
 
-from Crypto.Cipher import AES
-from Crypto import Random
 import base64
 import aes
 import sys
+
 
 def encrypt():
     # 加密
@@ -11,12 +10,14 @@ def encrypt():
     print("Encrypted lines:")
     print(encrypted.getvalue())
 
+
 def decrypt():
     # 解密
     decrypted = aes.decrypt_file("encrypted.txt", key, iv)
     print("\n")
     print("Decrypted lines are:")
     print(decrypted.getvalue())
+
 
 def encryptAndDecrypt():
     """
